@@ -9,11 +9,18 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "npm run dev"
-
   },
   "dependencies": {
+    "framer-motion": "^12.23.24",
+    "i18next": "^25.6.2",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "leaflet": "^1.9.4",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-i18next": "^16.3.1",
+    "react-icons": "^5.5.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^6.30.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

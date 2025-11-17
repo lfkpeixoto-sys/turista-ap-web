@@ -1,10 +1,16 @@
-function App() {
-  return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>🌎 TuristaAp Web</h1>
-      <p>Base configurada com sucesso!</p>
-    </div>
-  )
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard.jsx";
+import Explorar from "./pages/Explorar.jsx";
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />}>
+          <Route path="explorar" element={<Explorar />} />
+          {/* Outras abas podem ser adicionadas aqui */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
