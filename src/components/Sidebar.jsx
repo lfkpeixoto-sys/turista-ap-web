@@ -1,34 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../index.css";
 
 export default function Sidebar() {
-  const menuItems = [
-    "Meu Painel",
-    "Explorar",
-    "Tours",
-    "Minhas Reservas",
-    "Planos",
-    "Favoritos",
-    "Recompensas",
-    "Ranking",
-    "Modo Offline"
+  const links = [
+    { name: "Explorar", path: "/explorar" },
+    { name: "Favoritos", path: "/favoritos" },
+    { name: "Tours", path: "/tours" },
+    { name: "Ranking", path: "/ranking" },
+    { name: "Modo Offline", path: "/offline" },
   ];
 
   return (
-    <div className="sidebar">
-      <h2>Turista App</h2>
+    <aside className="sidebar">
+      <h2 className="logo">✈️ TuristaApp</h2>
+
       <nav>
-        <ul>
-          {menuItems.map((item, idx) => (
-            <li key={idx}>
-              <Link to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}>
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {links.map((link) => (
+          <NavLink
+            key={link.name}
+            to={link.path}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            {link.name}
+          </NavLink>
+        ))}
       </nav>
-    </div>
+    </aside>
   );
 }

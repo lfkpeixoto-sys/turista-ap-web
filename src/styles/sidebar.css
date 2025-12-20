@@ -1,0 +1,25 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #eee;
+  padding: 24px 16px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #444;
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.sidebar a.active {
+  background: #ffe7d6;
+  color: #ff6a00;
+  font-weight: 600;
+}

@@ -1,0 +1,343 @@
+.toursPage {
+  padding: 28px;
+}
+
+.toursHeader {
+  margin-bottom: 18px;
+}
+
+.toursTitle {
+  font-size: 56px;
+  line-height: 1.05;
+  margin: 0;
+  font-weight: 800;
+  color: #0e0e10;
+}
+
+.toursTitle span {
+  color: #ff7a1a;
+}
+
+.toursSubtitle {
+  margin: 8px 0 0 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.toursStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0 16px 0;
+}
+
+.statCard {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.statDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.statDot.orange { background: #ff7a1a; }
+.statDot.blue { background: #3b82f6; }
+.statDot.green { background: #22c55e; }
+.statDot.purple { background: #a855f7; }
+
+.statValue {
+  margin-top: 8px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.starIcon {
+  color: #f59e0b;
+}
+
+.toursControls {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+  margin: 10px 0 14px 0;
+}
+
+.searchWrap, .cityWrap {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px 0 40px;
+}
+
+.searchIcon, .cityIcon {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  background: transparent;
+}
+
+.citySelect {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #111827;
+  cursor: pointer;
+}
+
+.toursTabs {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.tabBtn {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tabBtn.active {
+  background: linear-gradient(135deg, #ff7a1a, #ff3d81);
+  color: #fff;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 18px 0 12px 0;
+}
+
+.sectionTitle h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  color: #111827;
+}
+
+.muted {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tourCard {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.07);
+}
+
+.cardImage {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+.badgesTop {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  user-select: none;
+}
+
+.badge.soft {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #111827;
+}
+
+.badge.highlight {
+  position: absolute;
+  top: 10px;
+  right: 54px;
+  background: rgba(255, 215, 0, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  color: #5a4500;
+}
+
+.favBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #ff3d81;
+}
+
+.cardBody {
+  padding: 14px 14px 16px 14px;
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6b7280;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #111827;
+}
+
+.rating svg {
+  color: #f59e0b;
+}
+
+.cardTitle {
+  margin: 10px 0 10px 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.cardInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.priceFrom {
+  font-weight: 900;
+  color: #111827;
+}
+
+.tagsRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.reserveBtn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, #ff7a1a, #ff3d81);
+}
+
+.reserveBtn:hover {
+  filter: brightness(0.98);
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+  .toursStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .toursTitle {
+    font-size: 40px;
+  }
+  .toursControls {
+    grid-template-columns: 1fr;
+  }
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,81 @@
+.city-card {
+  position: relative;
+  background: #f2f2f2;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.city-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.city-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  background: #ddd;
+}
+
+/* Botão de favorito (seu JSX usa favorite-btn) */
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.favorite-btn svg {
+  color: #999;
+  font-size: 16px;
+}
+
+.favorite-btn.active svg {
+  color: #e63946;
+}
+
+/* Info */
+.city-info {
+  padding: 14px 14px 16px 14px;
+}
+
+.city-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+
+.city-info span {
+  display: inline-block;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Rating agora fica bonito dentro do card */
+.rating {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rating svg {
+  color: #f4b400;
+}

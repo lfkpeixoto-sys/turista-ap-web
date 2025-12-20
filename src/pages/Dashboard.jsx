@@ -1,14 +1,101 @@
-import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar.jsx";
-import "../index.css";
+import { useEffect } from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import "../styles/dashboard.css";
+import { useAuth } from "../contexts/AuthContext.jsx";
+
+const NAV = [
+  { label: "Meu Painel", to: "/", end: true },
+  { label: "Explorar", to: "explorar" },
+  { label: "Tours", to: "tours" },
+
+  // já deixo navegável (se você ainda não criou as páginas, pode deixar disabled: true)
+  { label: "Minhas Reservas", to: "reservas", disabled: true },
+  { label: "Planos", to: "planos", disabled: true },
+  { label: "Favoritos", to: "favoritos", disabled: true },
+  { label: "Recompensas", to: "recompensas", disabled: true },
+  { label: "Ranking", to: "ranking", disabled: true },
+  { label: "Modo Offline", to: "offline", disabled: true },
+];
 
 export default function Dashboard() {
+  const { user, profile, logout } = useAuth();
+
+  // trava o scroll do body (scroll fica só no conteúdo)
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = prev || "");
+  }, []);
+
+  function comingSoon(e) {
+    e.preventDefault();
+    alert("Em breve ✅");
+  }
+
+  const displayName = profile?.displayName || user?.displayName || "Usuário";
+  const email = user?.email || "";
+  const avatarLetter = (displayName || "U").trim().charAt(0).toUpperCase();
+
   return (
-    <div className="dashboard-container">
-      <Sidebar />
-      <div className="dashboard-content">
-        <Outlet />
-      </div>
+    <div className="dashLayout">
+      <aside className="dashSidebar">
+        <div className="brand">
+          <div className="brandIcon">✈️</div>
+          <div className="brandText">
+            <div className="brandTitle">TuristaApp</div>
+            <div className="brandSub">Explore o mundo</div>
+          </div>
+        </div>
+
+        <div className="navTitle">NAVEGAÇÃO</div>
+
+        <div className="menuScroll">
+          <nav className="navList">
+            {NAV.map((item) =>
+              item.disabled ? (
+                <a
+                  key={item.label}
+                  href={item.to}
+                  onClick={comingSoon}
+                  className="navItem disabled"
+                >
+                  <span className="navIcon">•</span>
+                  <span className="navLabel">{item.label}</span>
+                  <span className="soon">Em breve</span>
+                </a>
+              ) : (
+                <NavLink
+                  key={item.label}
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) => `navItem ${isActive ? "active" : ""}`}
+                >
+                  <span className="navIcon">•</span>
+                  <span className="navLabel">{item.label}</span>
+                </NavLink>
+              )
+            )}
+          </nav>
+        </div>
+
+        <div className="userBox">
+          <div className="userAvatar">{avatarLetter}</div>
+          <div className="userInfo">
+            <div className="userName">{displayName}</div>
+            <div className="userEmail">{email}</div>
+          </div>
+
+          <button className="logoutBtn" type="button" onClick={logout}>
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <main className="dashMain">
+        <div className="dashScroll">
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 }
