@@ -20,39 +20,35 @@ export default function Dashboard() {
   const { user, profile, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Dados do usuário (ESTAVA FALTANDO)
   const displayName = profile?.displayName || user?.displayName || "Usuário";
   const email = user?.email || "";
   const avatarLetter = (displayName || "U").trim().charAt(0).toUpperCase();
 
-  // Em breve (ESTAVA FALTANDO)
   function comingSoon(e) {
     e.preventDefault();
     alert("Em breve ✅");
   }
 
-  // trava o scroll do body só no desktop
-useEffect(() => {
-  const prev = document.body.style.overflow;
+  // força modo mobile por classe + controla overflow
+  useEffect(() => {
+    const prev = document.body.style.overflow;
 
-  const apply = () => {
-    const mobile = window.innerWidth <= 900;
+    const apply = () => {
+      const mobile = window.innerWidth <= 900;
+      document.body.classList.toggle("isMobile", mobile);
+      document.body.style.overflow = mobile ? "auto" : "hidden";
+    };
 
-    document.body.classList.toggle("isMobile", mobile);
-    document.body.style.overflow = mobile ? "auto" : "hidden";
-  };
+    apply();
+    window.addEventListener("resize", apply);
 
-  apply();
-  window.addEventListener("resize", apply);
+    return () => {
+      window.removeEventListener("resize", apply);
+      document.body.classList.remove("isMobile");
+      document.body.style.overflow = prev || "auto";
+    };
+  }, []);
 
-  return () => {
-    window.removeEventListener("resize", apply);
-    document.body.classList.remove("isMobile");
-    document.body.style.overflow = prev || "auto";
-  };
-}, []);
-
-  // sidebar reutilizável (desktop e drawer mobile)
   const SidebarContent = () => (
     <>
       <div className="brand">
@@ -87,7 +83,7 @@ useEffect(() => {
                 className={({ isActive }) =>
                   `navItem ${isActive ? "active" : ""}`
                 }
-                onClick={() => setMenuOpen(false)} // fecha o menu ao navegar no mobile
+                onClick={() => setMenuOpen(false)}
               >
                 <span className="navIcon">•</span>
                 <span className="navLabel">{item.label}</span>
@@ -110,72 +106,74 @@ useEffect(() => {
       </div>
     </>
   );
-return (
-  <>
-{/* TOPBAR MOBILE */}
-<header className="mobileTopbar">
-  <button
-    className="mobileMenuBtn"
-    type="button"
-    onClick={() => setMenuOpen(true)}
-    aria-label="Abrir menu"
-  >
-    ☰
-  </button>
 
-  <div className="mobileBrand">
-    <span className="mobileBrandIcon">✈️</span>
-    <span className="mobileBrandText">TuristaApp</span>
-  </div>
-
-  <div className="mobileAvatar" aria-label="Usuário">
-    {avatarLetter}
-  </div>
-</header>
-
-    {/* DRAWER MOBILE */}
-    {menuOpen && (
-      <div
-        className="drawerOverlay"
-        onClick={() => setMenuOpen(false)}
-        role="presentation"
-      >
-        <aside
-          className="drawer"
-          onClick={(e) => e.stopPropagation()}
-          role="dialog"
-          aria-modal="true"
+  return (
+    <>
+      {/* TOPBAR MOBILE */}
+      <header className="mobileTopbar">
+        <button
+          className="mobileMenuBtn"
+          type="button"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Abrir menu"
         >
-          <div className="drawerHeader">
-            <div className="drawerTitle">Menu</div>
-            <button
-              className="drawerCloseBtn"
-              type="button"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Fechar menu"
-            >
-              ✕
-            </button>
-          </div>
+          ☰
+        </button>
 
-          <div className="drawerBody">
-            <SidebarContent />
-          </div>
-        </aside>
-      </div>
-    )}
-
-    {/* LAYOUT (DESKTOP NORMAL) */}
-    <div className="dashLayout">
-      <aside className="dashSidebar">
-        <SidebarContent />
-      </aside>
-
-      <main className="dashMain">
-        <div className="dashScroll">
-          <Outlet />
+        <div className="mobileBrand">
+          <span className="mobileBrandIcon">✈️</span>
+          <span className="mobileBrandText">TuristaApp</span>
         </div>
-      </main>
-    </div>
-  </>
-);} 
+
+        <div className="mobileAvatar" aria-label="Usuário">
+          {avatarLetter}
+        </div>
+      </header>
+
+      {/* DRAWER MOBILE */}
+      {menuOpen && (
+        <div
+          className="drawerOverlay"
+          onClick={() => setMenuOpen(false)}
+          role="presentation"
+        >
+          <aside
+            className="drawer"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="drawerHeader">
+              <div className="drawerTitle">Menu</div>
+              <button
+                className="drawerCloseBtn"
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Fechar menu"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="drawerBody">
+              <SidebarContent />
+            </div>
+          </aside>
+        </div>
+      )}
+
+      {/* LAYOUT (DESKTOP NORMAL) */}
+      <div className="dashLayout">
+        <aside className="dashSidebar">
+          <SidebarContent />
+        </aside>
+
+        <main className="dashMain">
+          <div className="dashScroll">
+            <Outlet />
+          </div>
+        </main>
+      </div>
+    </>
+  );
+}
