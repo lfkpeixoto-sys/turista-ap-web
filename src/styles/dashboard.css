@@ -59,3 +59,222 @@
 
 .dashMain{ flex:1; height:100vh; overflow:hidden; }
 .dashScroll{ height:100%; overflow-y:auto; overflow-x:hidden; }
+/* =============== MOBILE / RESPONSIVO =============== */
+
+.mobileTopbar {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* some sidebar fixa no mobile */
+  .dashSidebar {
+    display: none;
+  }
+
+  /* layout deixa de ser flex lado a lado */
+  .dashLayout {
+    display: block;
+  }
+
+  /* topbar aparece */
+  .mobileTopbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobileMenuBtn {
+    font-size: 22px;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .mobileBrand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+  }
+
+  .mobileBrandIcon {
+    font-size: 18px;
+  }
+
+  .mobileBrandText {
+    font-size: 14px;
+    opacity: 0.95;
+  }
+
+  .mobileAvatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* dá um respiro no conteúdo no mobile */
+  .dashMain {
+    padding: 0;
+  }
+
+  .dashScroll {
+    padding: 14px;
+  }
+}
+
+/* =============== DRAWER MOBILE =============== */
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 999;
+}
+
+.drawer {
+  width: 86vw;
+  max-width: 320px;
+  height: 100%;
+  background: #0f0f10;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 6px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawerTitle {
+  font-weight: 800;
+  opacity: 0.95;
+}
+
+.drawerCloseBtn {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.drawerBody {
+  height: calc(100% - 54px);
+  overflow: auto;
+  padding: 10px 6px;
+}
+/* ====== CORREÇÃO MOBILE FORÇADA ====== */
+@media (max-width: 900px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .dashLayout {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .dashSidebar {
+    display: none !important;
+    width: 0 !important;
+  }
+
+  .dashMain {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .dashScroll {
+    width: 100% !important;
+    padding: 14px !important;
+  }
+
+  .mobileTopbar {
+    display: flex !important;
+  }
+}
+/* TESTE: se isso aparecer, o CSS novo carregou */
+.mobileTopbar::after {
+  content: " (MOBILE OK)";
+  font-size: 12px;
+  opacity: 0.7;
+}
+/* ===== MOBILE FORÇADO POR CLASSE (SEM @media) ===== */
+body.isMobile .dashSidebar {
+  display: none !important;
+}
+
+body.isMobile .dashLayout {
+  display: block !important;
+  width: 100% !important;
+}
+
+body.isMobile .mobileTopbar {
+  display: flex !important;
+}
+
+body.isMobile .dashMain {
+  width: 100% !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+body.isMobile .dashScroll {
+  padding: 14px !important;
+}
+/* ===== MOBILE FORÇADO POR CLASSE (SEM @media) ===== */
+body.isMobile .dashSidebar {
+  display: none !important;
+}
+
+body.isMobile .dashLayout {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100dvh !important;
+}
+
+body.isMobile .mobileTopbar {
+  display: flex !important;
+}
+
+body.isMobile .dashMain {
+  width: 100% !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow: visible !important;
+}
+
+body.isMobile .dashScroll {
+  padding: 14px !important;
+  overflow-x: hidden !important;
+}
+body {
+  outline: 10px solid red !important;
+}
