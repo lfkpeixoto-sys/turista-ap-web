@@ -114,22 +114,8 @@ useEffect(() => {
   return (
     <>
       {/* TOPBAR MOBILE */}
-<header
-  className="mobileTopbar"
-  style={{
-    display: "flex",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 60,
-    background: "red",
-    zIndex: 999999,
-    color: "white",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: 900
-  }}
+<header className="mobileTopbar">
+
       {/* DRAWER MOBILE */}
       {menuOpen && (
         <div
@@ -140,7 +126,7 @@ useEffect(() => {
           <aside
             className="drawer"
             onClick={(e) => e.stopPropagation()}
-            role="dialog
+            role="dialog"
             aria-modal="true"
           >
             <div className="drawerHeader">
