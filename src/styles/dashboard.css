@@ -249,3 +249,51 @@ body.isMobile .dashScroll {
   padding: 14px !important;
   overflow-x: hidden !important;
 }
+/* ===== MOBILE VISUAL (clean, tema claro) ===== */
+body.isMobile .mobileTopbar{
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-bottom: 1px solid #eee !important;
+}
+
+body.isMobile .mobileMenuBtn{
+  color: #111827 !important;
+}
+
+body.isMobile .mobileAvatar{
+  border: 1px solid #e5e7eb !important;
+  color: #111827 !important;
+  background: #f9fafb !important;
+}
+
+/* overlay mais leve */
+body.isMobile .drawerOverlay{
+  background: rgba(0,0,0,.35) !important;
+}
+
+/* drawer branco igual sidebar */
+body.isMobile .drawer{
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-right: 1px solid #eee !important;
+}
+
+/* botões/itens dentro do drawer herdarem bem */
+body.isMobile .drawer .navItem{
+  color: #111827 !important;
+}
+body.isMobile .drawer .navIcon{
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+body.isMobile .drawer .soon{
+  color: #6b7280 !important;
+}
+
+/* animação (opcional, deixa mais “app”) */
+body.isMobile .drawer{
+  transform: translateX(0);
+}
+body.isMobile .dashScroll{
+  padding: 12px !important;
+}
