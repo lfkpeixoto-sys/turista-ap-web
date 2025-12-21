@@ -112,26 +112,26 @@ useEffect(() => {
   );
 return (
   <>
-    {/* TOPBAR MOBILE */}
-    <header className="mobileTopbar">
-      <button
-        className="mobileMenuBtn"
-        type="button"
-        onClick={() => setMenuOpen(true)}
-        aria-label="Abrir menu"
-      >
-        ☰
-      </button>
+{/* TOPBAR MOBILE */}
+<header className="mobileTopbar">
+  <button
+    className="mobileMenuBtn"
+    type="button"
+    onClick={() => setMenuOpen(true)}
+    aria-label="Abrir menu"
+  >
+    ☰
+  </button>
 
-      <div className="mobileBrand">
-        <span className="mobileBrandIcon">✈️</span>
-        <span className="mobileBrandText">TuristaApp</span>
-      </div>
+  <div className="mobileBrand">
+    <span className="mobileBrandIcon">✈️</span>
+    <span className="mobileBrandText">TuristaApp</span>
+  </div>
 
-      <div className="mobileAvatar">
-        {avatarLetter}
-      </div>
-    </header>
+  <div className="mobileAvatar" aria-label="Usuário">
+    {avatarLetter}
+  </div>
+</header>
 
     {/* DRAWER MOBILE */}
     {menuOpen && (
@@ -178,4 +178,4 @@ return (
       </main>
     </div>
   </>
-)
+);} 
