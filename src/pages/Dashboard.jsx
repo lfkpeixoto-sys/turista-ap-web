@@ -110,56 +110,72 @@ useEffect(() => {
       </div>
     </>
   );
+return (
+  <>
+    {/* TOPBAR MOBILE */}
+    <header className="mobileTopbar">
+      <button
+        className="mobileMenuBtn"
+        type="button"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Abrir menu"
+      >
+        ☰
+      </button>
 
-  return (
-    <>
-      {/* TOPBAR MOBILE */}
-<header className="mobileTopbar">
-
-      {/* DRAWER MOBILE */}
-      {menuOpen && (
-        <div
-          className="drawerOverlay"
-          onClick={() => setMenuOpen(false)}
-          role="presentation"
-        >
-          <aside
-            className="drawer"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-          >
-            <div className="drawerHeader">
-              <div className="drawerTitle">Menu</div>
-              <button
-                className="drawerCloseBtn"
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Fechar menu"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="drawerBody">
-              <SidebarContent />
-            </div>
-          </aside>
-        </div>
-      )}
-
-      {/* LAYOUT (DESKTOP NORMAL) */}
-      <div className="dashLayout">
-        <aside className="dashSidebar">
-          <SidebarContent />
-        </aside>
-
-        <main className="dashMain">
-          <div className="dashScroll">
-            <Outlet />
-          </div>
-        </main>
+      <div className="mobileBrand">
+        <span className="mobileBrandIcon">✈️</span>
+        <span className="mobileBrandText">TuristaApp</span>
       </div>
-    </>
-  );
-}
+
+      <div className="mobileAvatar">
+        {avatarLetter}
+      </div>
+    </header>
+
+    {/* DRAWER MOBILE */}
+    {menuOpen && (
+      <div
+        className="drawerOverlay"
+        onClick={() => setMenuOpen(false)}
+        role="presentation"
+      >
+        <aside
+          className="drawer"
+          onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="drawerHeader">
+            <div className="drawerTitle">Menu</div>
+            <button
+              className="drawerCloseBtn"
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Fechar menu"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="drawerBody">
+            <SidebarContent />
+          </div>
+        </aside>
+      </div>
+    )}
+
+    {/* LAYOUT (DESKTOP NORMAL) */}
+    <div className="dashLayout">
+      <aside className="dashSidebar">
+        <SidebarContent />
+      </aside>
+
+      <main className="dashMain">
+        <div className="dashScroll">
+          <Outlet />
+        </div>
+      </main>
+    </div>
+  </>
+)
