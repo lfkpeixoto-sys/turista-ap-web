@@ -8,3 +8,118 @@
   border-right: 1px solid #eee;
   padding: 16px;
 }
+/* ===== BASE ===== */
+:root {
+  --sidebar-w: 260px;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+}
+
+/* ===== MOBILE ===== */
+.mobile-topbar {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    display: block; /* tira o flex do desktop */
+  }
+
+  .sidebar {
+    display: none; /* some no mobile */
+  }
+
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    position: sticky;
+    top: 0;
+    background: #0b0b0b; /* ajusta pro teu tema */
+    z-index: 50;
+  }
+
+  .main {
+    padding: 14px; /* padding menor */
+  }
+}
+/* ===== BASE ===== */
+:root {
+  --sidebar-w: 260px;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+}
+
+/* ===== MOBILE ===== */
+.mobile-topbar {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    display: block; /* tira o flex do desktop */
+  }
+
+  .sidebar {
+    display: none; /* some no mobile */
+  }
+
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    position: sticky;
+    top: 0;
+    background: #0b0b0b; /* ajusta pro teu tema */
+    z-index: 50;
+  }
+
+  .main {
+    padding: 14px; /* padding menor */
+  }
+}
+/* ===== Base responsiva geral ===== */
+* { box-sizing: border-box; }
+
+img, video { max-width: 100%; height: auto; }
+
+html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
+
+@media (max-width: 700px){
+  .page, .container {
+    padding: 14px !important;
+  }
+}
+input, select, textarea { font-size: 16px; }

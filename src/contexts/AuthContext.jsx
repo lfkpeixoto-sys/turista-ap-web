@@ -28,6 +28,9 @@ export function AuthProvider({ children }) {
             youtubeUrl: "",
             whatsappE164: "",
             whatsappVerified: false,
+            wishlistCities: [],
+visitedCities: [],
+
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
           },

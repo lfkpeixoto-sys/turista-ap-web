@@ -1,0 +1,153 @@
+.editPage{ padding: 28px; }
+
+.editTop{
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.editTop h1{
+  margin:0;
+  font-size: 34px;
+  font-weight: 900;
+  color:#111827;
+}
+.editTop p{
+  margin:8px 0 0;
+  color:#6b7280;
+  font-weight:800;
+}
+
+.editActions{ display:flex; gap:10px; }
+
+.btnPrimary{
+  border:none;
+  border-radius: 14px;
+  padding: 11px 14px;
+  cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  background: linear-gradient(135deg, #ff7a1a, #ff3d81);
+}
+.btnPrimary:disabled{ opacity:.7; cursor:not-allowed; }
+
+.btnGhost{
+  border:1px solid #ececec;
+  border-radius: 14px;
+  padding: 11px 14px;
+  cursor:pointer;
+  font-weight:900;
+  background:#fff;
+  color:#111827;
+}
+.btnGhost:disabled{ opacity:.7; cursor:not-allowed; }
+
+.editGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items:start;
+}
+
+.editCard{
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.06);
+}
+
+.cardTitle{
+  font-weight: 900;
+  color:#111827;
+  margin-bottom: 12px;
+}
+
+.label{
+  display:block;
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 12px;
+  color:#111827;
+}
+
+.input, .textarea{
+  width:100%;
+  margin-top: 6px;
+  padding: 12px;
+  border:1px solid #ececec;
+  border-radius: 12px;
+  outline:none;
+  font-weight: 700;
+  font-family: inherit;
+}
+.textarea{ resize: vertical; }
+
+.divider{
+  margin: 14px 0;
+  height: 1px;
+  background:#f0f0f0;
+}
+
+.waRow{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items:start;
+}
+
+.labelRow{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge{
+  font-weight: 900;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #ececec;
+}
+.badge.ok{ background:#ecfdf5; border-color:#bbf7d0; color:#166534; }
+.badge.no{ background:#fff7ed; border-color:#fed7aa; color:#9a3412; }
+
+.hint{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 980px){
+  .editGrid{ grid-template-columns: 1fr; }
+  .editTop{ flex-direction: column; }
+}
+/* ===== Editar Perfil MOBILE ===== */
+@media (max-width: 700px){
+  .formRow{
+    flex-direction: column !important;
+  }
+
+  .formActions{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .formActions button{
+    width: 100%;
+  }
+
+  input, select, textarea{
+    font-size: 16px; /* evita zoom do iPhone */
+  }
+}

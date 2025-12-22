@@ -202,3 +202,26 @@
   .grid{ grid-template-columns: 1fr; }
   .explore-title{ font-size: 34px; }
 }
+/* ===== Explorar MOBILE ===== */
+@media (max-width: 900px){
+  .explorarGrid, .grid, .cardsGrid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .filtersRow, .filters, .topFilters{
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .filtersRow > *, .filters > *{
+    flex: 1;
+    min-width: 140px;
+  }
+
+  /* mapa opcional: esconde no mobile se estiver quebrando layout */
+  .mapWrap, .mapContainer{
+    height: 260px !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+  }
+}

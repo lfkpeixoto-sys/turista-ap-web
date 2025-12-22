@@ -1,281 +1,647 @@
-.profileCard{
-  background:#fff;
-  border:1px solid #ececec;
-  border-radius:16px;
-  padding:16px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
-  margin-top: 16px;
-}
+.painelPage{ padding: 26px; }
 
-.profileTop{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-}
-
-.profileAvatar{
-  width:58px;
-  height:58px;
-  border-radius:999px;
-  background: linear-gradient(135deg, #7c3aed, #ff3d81);
-  color:#fff;
-  font-weight:900;
-  display:grid;
-  place-items:center;
-  font-size:20px;
-  flex: 0 0 auto;
-}
-
-.profileInfo{ flex: 1; }
-
-.profileNameRow{
+.painelHeader{
   display:flex;
   align-items:flex-start;
-  justify-content:space-between;
-  gap:12px;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
 }
-
-.profileName{
-  font-weight:900;
-  font-size:18px;
-  color:#111827;
-  line-height:1.1;
-}
-
-.profileUser{
-  margin-top: 3px;
-  font-weight:800;
-  color:#6b7280;
-  font-size:13px;
-}
-
-.profileEditBtn{
-  border:1px solid #ececec;
-  background:#f9fafb;
-  padding:10px 12px;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
-  color:#111827;
-  white-space: nowrap;
-}
-
-.profileBio{
-  margin-top:10px;
-  color:#374151;
-  font-weight:700;
-}
-
-.profileMeta{
-  margin-top:10px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  color:#6b7280;
-  font-weight:700;
-  font-size:13px;
-}
-
-.profileStats{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:10px;
-}
-
-.pStat{
-  border:1px solid #ececec;
-  background:#fff;
-  border-radius:14px;
-  padding:12px;
-  text-align:center;
-}
-
-.pStatValue{
-  font-weight:900;
-  font-size:18px;
-  color:#111827;
-}
-
-.pStatLabel{
-  margin-top:4px;
-  font-weight:800;
-  font-size:12px;
-  color:#6b7280;
-}
-
-.profileSocial{
-  margin-top:12px;
-  display:grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap:10px;
-}
-
-.socialBtn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  text-decoration:none;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid #ececec;
-  font-weight:900;
-  color:#111827;
-  background:#f9fafb;
-}
-
-.socialBtn:hover{ filter: brightness(0.98); }
-
-.socialBtn.ig { background: linear-gradient(135deg, #fff, #ffe4f1); }
-.socialBtn.wa { background: linear-gradient(135deg, #fff, #e8fff3); }
-.socialBtn.tt { background: linear-gradient(135deg, #fff, #eef2ff); }
-.socialBtn.yt { background: linear-gradient(135deg, #fff, #ffecec); }
-
-@media (max-width: 900px){
-  .profileSocial{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-
-/* Página do painel principal */
-.painelPage { padding: 28px; }
 
 .painelHeader h1{
   margin:0;
-  font-size:44px;
-  font-weight:900;
+  font-size: 34px;
+  font-weight: 900;
   color:#111827;
 }
+
 .painelHeader p{
-  margin:10px 0 0;
+  margin:8px 0 0;
   color:#6b7280;
-  font-weight:700;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
+.painelHeaderActions{ display:flex; gap:10px; }
+
+.btnPrimary{
+  border:none;
+  border-radius: 14px;
+  padding: 11px 14px;
+  cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  background: linear-gradient(135deg, #ff7a1a, #ff3d81);
+}
+.btnPrimary:hover{ filter: brightness(.98); }
+
+.btnGhost{
+  border:1px solid #ececec;
+  border-radius: 14px;
+  padding: 11px 14px;
+  cursor:pointer;
+  font-weight:900;
+  background:#fff;
+  color:#111827;
+}
+.btnGhost:hover{ filter: brightness(.98); }
+
+.btnDanger{
+  border:1px solid #fca5a5;
+  border-radius: 14px;
+  padding: 11px 14px;
+  cursor:pointer;
+  font-weight:900;
+  background:#fff;
+  color:#b91c1c;
+}
+.btnDanger:hover{ filter: brightness(.98); }
+
 .painelGrid{
-  margin-top:18px;
   display:grid;
-  grid-template-columns: 1.7fr 0.9fr;
-  gap:16px;
+  grid-template-columns: 1fr 360px;
+  gap: 14px;
   align-items:start;
 }
 
-.placeholderCard{
+.painelMain{ display:grid; gap: 14px; }
+
+.kpiRow{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.kpiCard{
   background:#fff;
   border:1px solid #ececec;
-  border-radius:16px;
-  padding:16px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.06);
 }
+
+.kpiTop{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.kpiIcon{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display:grid;
+  place-items:center;
+  background:#f3f4f6;
+  font-weight: 900;
+}
+
+.kpiLabel{ font-weight: 900; color:#111827; }
+.kpiValue{ font-weight: 900; font-size: 28px; color:#111827; }
+.kpiHint{ margin-top: 4px; color:#6b7280; font-weight: 800; font-size: 12px; }
+
+.panelCard{
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.06);
+}
+
+.panelCardTitle{
+  font-weight: 900;
+  color:#111827;
+  margin-bottom: 12px;
+}
+
+.suggestGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.suggestCard{
+  border:1px solid #ececec;
+  border-radius: 16px;
+  background:#fff;
+  padding: 12px;
+  cursor:pointer;
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+  text-align:left;
+}
+
+.suggestCard:hover{ filter: brightness(.98); }
+
+.suggestIcon{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background:#fbf4e8;
+  font-weight: 900;
+}
+
+.suggestTitle{ font-weight: 900; color:#111827; }
+.suggestSub{ margin-top: 3px; font-weight: 800; font-size: 12px; color:#6b7280; }
+
+.quickRow{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.quickBtn{
+  border:1px solid #ececec;
+  border-radius: 999px;
+  padding: 10px 12px;
+  background:#fff;
+  font-weight: 900;
+  cursor:pointer;
+}
+.quickBtn:hover{ filter: brightness(.98); }
+.quickBtn.disabled{ opacity:.6; }
+
+.painelSide{ position: sticky; top: 14px; }
 
 .profileCard{
   background:#fff;
   border:1px solid #ececec;
-  border-radius:16px;
-  padding:16px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.06);
 }
 
-.profileTop{ display:flex; gap:14px; align-items:flex-start; }
+.profileTop{ display:flex; gap: 12px; align-items:flex-start; }
 
 .profileAvatar{
-  width:58px; height:58px; border-radius:999px;
-  background: linear-gradient(135deg, #7c3aed, #ff3d81);
-  color:#fff; font-weight:900; display:grid; place-items:center; font-size:20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff7a1a, #ff3d81);
 }
 
-.profileName{ font-weight:900; font-size:18px; color:#111827; line-height:1.1; }
-.profileUser{ margin-top:3px; font-weight:800; color:#6b7280; font-size:13px; }
-.profileBio{ margin-top:10px; color:#374151; font-weight:700; }
+.profileName{ font-weight: 900; color:#111827; font-size: 18px; }
+.profileUser{ color:#6b7280; font-weight: 900; font-size: 12px; margin-top: 2px; }
+.profileBio{ margin-top: 10px; color:#374151; font-weight: 800; line-height: 1.4; }
 
 .profileMeta{
-  margin-top:10px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+  margin-top: 10px;
+  display:grid;
+  gap: 6px;
   color:#6b7280;
-  font-weight:700;
-  font-size:13px;
-}
-
-.profileStats{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:10px;
-}
-
-.pStat{
-  border:1px solid #ececec;
-  background:#fff;
-  border-radius:14px;
-  padding:12px;
-  text-align:center;
-}
-.pStatValue{ font-weight:900; font-size:18px; color:#111827; }
-.pStatLabel{ margin-top:4px; font-weight:800; font-size:12px; color:#6b7280; }
-
-.profileActions{
-  margin-top:12px;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:10px;
-}
-
-.profileEditBtn,.profileShareBtn{
-  border:1px solid #ececec;
-  background:#f9fafb;
-  padding:10px 12px;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
-  color:#111827;
-}
-.profileEditBtn:hover,.profileShareBtn:hover{ filter: brightness(0.98); }
-
-.profileSocial{
-  margin-top:12px;
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap:10px;
-}
-
-.socialBtn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  text-decoration:none;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid #ececec;
-  font-weight:900;
-  color:#111827;
-  background:#f9fafb;
-}
-.socialBtn:hover{ filter: brightness(0.98); }
-
-.socialBtn.ig { background: linear-gradient(135deg, #fff, #ffe4f1); }
-.socialBtn.wa { background: linear-gradient(135deg, #fff, #e8fff3); }
-.socialBtn.tt { background: linear-gradient(135deg, #fff, #eef2ff); }
-.socialBtn.yt { background: linear-gradient(135deg, #fff, #ffecec); }
-
-.socialBtn.disabled{
-  opacity: .6;
-  cursor: pointer;
-}
-
-.verifyHint{
-  margin-top: 12px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
-  font-weight: 900;
+  font-weight: 800;
   font-size: 12px;
 }
 
-@media (max-width: 1000px){
-  .painelGrid{ grid-template-columns: 1fr; }
+.profileSocial{
+  margin-top: 14px;
+  display:grid;
+  gap: 10px;
 }
 
+.socialBtn{
+  border:1px solid #ececec;
+  border-radius: 14px;
+  padding: 11px 12px;
+  background:#fff;
+  font-weight: 900;
+  text-decoration:none;
+  color:#111827;
+  cursor:pointer;
+  text-align:left;
+}
+.socialBtn:hover{ filter: brightness(.98); }
+
+.socialBtn.off{
+  opacity:.75;
+}
+
+.profileFooter{ margin-top: 12px; }
+
+@media (max-width: 1100px){
+  .painelGrid{ grid-template-columns: 1fr; }
+  .painelSide{ position: relative; top: 0; }
+  .kpiRow{ grid-template-columns: 1fr; }
+  .suggestGrid{ grid-template-columns: 1fr; }
+}
+.cleanHeader { margin-bottom: 10px; }
+
+.miniStats{
+  display:flex;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.miniStat{
+  flex: 1;
+  min-width: 170px;
+  background: #fff;
+  border:1px solid #ececec;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.05);
+}
+
+.miniLabel{ color:#6b7280; font-weight: 900; font-size: 12px; }
+.miniValue{ font-weight: 900; font-size: 26px; color:#111827; margin-top: 6px; }
+
+.miniAdd{
+  border-radius: 16px;
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.cleanCard{ padding: 16px; }
+
+.panelCardTitleRow{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.muted{ color:#6b7280; font-weight: 800; font-size: 12px; }
+
+.emptyBox{
+  border: 1px dashed #e5e7eb;
+  background:#fafafa;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.emptyTitle{ font-weight: 900; color:#111827; }
+.emptySub{ margin-top: 6px; color:#6b7280; font-weight: 800; }
+
+.cityList{
+  display:grid;
+  gap: 10px;
+}
+
+.cityItem{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.cityItem.visited{
+  background: #f8fafc;
+}
+
+.cityMain{ display:grid; gap: 4px; }
+.cityName{ font-weight: 900; color:#111827; }
+.cityMeta{ color:#6b7280; font-weight: 900; font-size: 12px; }
+
+.cityActions{ display:flex; gap: 8px; flex-wrap: wrap; }
+
+.small{
+  padding: 9px 10px !important;
+  border-radius: 12px !important;
+  font-size: 12px;
+}
+
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  display:grid;
+  place-items: center;
+  z-index: 50;
+  padding: 16px;
+}
+
+.modal{
+  width: min(520px, 100%);
+  background:#fff;
+  border-radius: 18px;
+  border:1px solid #ececec;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  padding: 16px;
+}
+
+.modalTitle{
+  font-weight: 900;
+  font-size: 18px;
+  color:#111827;
+  margin-bottom: 10px;
+}
+
+.modalActions{
+  margin-top: 14px;
+  display:flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 700px){
+  .cityItem{ flex-direction: column; align-items:flex-start; }
+  .cityActions{ width:100%; }
+}
+/* =========================
+   MOBILE POLISH (Meu Painel)
+   ========================= */
+@media (max-width: 700px) {
+  .painelPage {
+    padding: 14px;
+  }
+
+  /* Header vira coluna e fica menor */
+  .painelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .painelHeader h1 {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .painelHeader p {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  /* Botões do header em 2 colunas (mais "app") */
+  .painelHeaderActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .painelHeaderActions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mini stats vira grid com CTA embaixo */
+  .miniStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .miniStat {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .miniValue {
+    font-size: 22px;
+  }
+
+  /* botão adicionar ocupa largura total */
+  .miniAdd {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  /* Cards mais compactos */
+  .panelCard,
+  .cleanCard {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  /* Título + ação quebra para baixo */
+  .panelCardTitleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .panelCardTitleRow .btnGhost {
+    width: 100%;
+  }
+
+  /* City item fica "card" */
+  .cityItem {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .cityActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .cityActions .small {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Modal no mobile */
+  .modal {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .modalActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .modalActions button {
+    width: 100%;
+  }
+}
+/* =========================
+   A1 — Header do Meu Painel (mobile)
+   ========================= */
+@media (max-width: 700px) {
+  .painelPage { padding: 14px; }
+
+  .painelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .painelHeader h1{
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .painelHeader p{
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .painelHeaderActions{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .painelHeaderActions button{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* botões um pouco menores no mobile */
+  .btnGhost, .btnDanger{
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+}
+/* =========================
+   A2 — Refinamento visual do topo (mobile)
+   ========================= */
+@media (max-width: 700px) {
+  .painelHeader {
+    padding-bottom: 6px;
+  }
+
+  .painelHeader h1 {
+    margin-bottom: 2px;
+  }
+
+  .painelHeader p {
+    opacity: 0.85;
+  }
+
+  /* diminui o impacto do fundo claro logo no topo */
+  .painelPage > .panelCard:first-of-type,
+  .painelPage > .miniStats {
+    margin-top: 6px;
+  }
+}
+/* =========================
+   B1 — Cards e listas (mobile)
+   ========================= */
+@media (max-width: 700px) {
+  /* cards mais compactos */
+  .panelCard, .cleanCard {
+    padding: 14px;
+    border-radius: 16px;
+    box-shadow: 0 10px 22px rgba(0,0,0,.05);
+  }
+
+  /* título do card mais “app” */
+  .panelCardTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* linha do título + botão (Explorar cidades) */
+  .panelCardTitleRow{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* se faltar espaço, quebra bonito */
+  .panelCardTitleRow .btnGhost{
+    padding: 9px 12px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  /* caixa vazia mais compacta */
+  .emptyBox{
+    padding: 14px;
+    border-radius: 14px;
+  }
+  .emptyTitle{ font-size: 14px; }
+  .emptySub{ font-size: 13px; line-height: 1.35; }
+
+  /* lista fica com “cards” menores */
+  .cityList { gap: 10px; }
+
+  .cityItem{
+    padding: 12px;
+    border-radius: 14px;
+    align-items: flex-start;
+  }
+
+  .cityMain{
+    width: 100%;
+  }
+
+  .cityName{
+    font-size: 15px;
+  }
+
+  .cityMeta{
+    font-size: 12px;
+  }
+
+  /* ações sempre alinhadas e com largura total */
+  .cityActions{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .cityActions button{
+    width: 100%;
+  }
+
+  .small{
+    padding: 10px 10px !important;
+    border-radius: 12px !important;
+    font-size: 12px;
+  }
+}
+/* =========================
+   B2.1 — Badge de contagem
+   ========================= */
+.badgeCount{
+  margin-left: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 900;
+  font-size: 12px;
+}
+/* =========================
+   B2.2 — Hierarquia mobile
+   ========================= */
+@media (max-width: 700px){
+  .panelCardTitle{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  .muted{
+    font-size: 12px;
+  }
+
+  .emptySub{
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}

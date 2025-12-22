@@ -4,16 +4,17 @@ import "../styles/dashboard.css";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
 const NAV = [
-  { label: "Meu Painel", to: "/", end: true },
-  { label: "Explorar", to: "explorar" },
-  { label: "Tours", to: "tours" },
+  { label: "Meu Painel", to: "/", end: true, icon: "🏠" },
+  { label: "Explorar", to: "explorar", icon: "🧭" },
+  { label: "Tours", to: "tours", icon: "🎟️" },
 
-  { label: "Minhas Reservas", to: "reservas", disabled: true },
-  { label: "Planos", to: "planos", disabled: true },
-  { label: "Favoritos", to: "favoritos", disabled: true },
-  { label: "Recompensas", to: "recompensas", disabled: true },
-  { label: "Ranking", to: "ranking", disabled: true },
-  { label: "Modo Offline", to: "offline", disabled: true },
+{ label: "Minhas Reservas", to: "reservas", icon: "📅" },
+{ label: "Planos", to: "planos", icon: "💎" },
+
+  { label: "Favoritos", to: "favoritos", disabled: true, icon: "❤️" },
+  { label: "Recompensas", to: "recompensas", disabled: true, icon: "🎁" },
+  { label: "Ranking", to: "ranking", disabled: true, icon: "🏆" },
+  { label: "Modo Offline", to: "offline", disabled: true, icon: "📴" },
 ];
 
 export default function Dashboard() {
@@ -71,7 +72,7 @@ export default function Dashboard() {
                 onClick={comingSoon}
                 className="navItem disabled"
               >
-                <span className="navIcon">•</span>
+                <span className="navIcon">{item.icon}</span>
                 <span className="navLabel">{item.label}</span>
                 <span className="soon">Em breve</span>
               </a>
@@ -85,7 +86,7 @@ export default function Dashboard() {
                 }
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="navIcon">•</span>
+              <span className="navIcon">{item.icon}</span>
                 <span className="navLabel">{item.label}</span>
               </NavLink>
             )

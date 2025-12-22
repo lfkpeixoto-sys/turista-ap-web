@@ -297,3 +297,97 @@ body.isMobile .drawer{
 body.isMobile .dashScroll{
   padding: 12px !important;
 }
+/* topbar fixa no mobile */
+body.isMobile .mobileTopbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+body.isMobile .dashMain{
+  padding-top: 56px; /* ajuste se sua topbar for maior/menor */
+}
+/* FIXA TOPBAR NO MOBILE (FORÇADO) */
+body.isMobile .mobileTopbar{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 2000 !important;
+}
+
+body.isMobile .dashMain{
+  padding-top: 56px !important;
+}
+/* ===== Menu icons polish ===== */
+.navIcon{
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  font-size: 16px; /* pra emoji ficar bom */
+  line-height: 1;
+}
+.navItem.active .navIcon{
+  color: #111827 !important;      /* força o emoji visível */
+  background: rgba(255,255,255,.9);
+}
+/* ===== C2: Menu premium (badge + disabled) ===== */
+.navItem.disabled{
+  opacity: .7;
+}
+
+.navItem.disabled:hover{
+  background: transparent; /* não “acende” no hover */
+}
+
+.soon{
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* quando o item estiver ativo, o badge fica mais “suave” */
+.navItem.active .soon{
+  background: rgba(255,255,255,.25);
+  color: rgba(255,255,255,.95);
+}
+/* ===== C3: Active state premium ===== */
+.navItem{
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+
+.navItem:active{
+  transform: scale(0.98); /* sensação de botão no mobile */
+}
+
+/* item ativo ganha sombra leve */
+.navItem.active{
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+}
+
+/* separador suave entre menu e userBox */
+.userBox{
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+/* ===== Mobile drawer: deixa o menu mais "app" ===== */
+body.isMobile .drawer{
+  border-radius: 0 18px 18px 0;
+}
+
+body.isMobile .drawerHeader{
+  position: sticky;
+  top: 0;
+  background: #0f0f10;
+  z-index: 2;
+}
+
+/* aumenta área de toque no mobile */
+body.isMobile .navItem{
+  padding: 12px 12px;
+  border-radius: 14px;
+}

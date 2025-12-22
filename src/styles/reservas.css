@@ -1,0 +1,759 @@
+.mr-page {
+  width: 100%;
+  padding: 18px 18px 28px;
+}
+
+.mr-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.mr-title {
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mr-subtitle {
+  margin: 6px 0 0;
+  opacity: 0.75;
+}
+
+.mr-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 10px;
+  width: min(520px, 100%);
+}
+
+.mr-stat {
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.75);
+  border-radius: 16px;
+  padding: 10px 12px;
+}
+
+.mr-statLabel {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.mr-statValue {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.mr-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 14px;
+}
+
+.mr-tab {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.mr-tab.active {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+}
+
+.mr-filters {
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.75);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.mr-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.9);
+}
+
+.mr-search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: 14px;
+}
+
+.mr-icon {
+  opacity: 0.85;
+}
+
+.mr-filterRow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.mr-field label {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+  margin: 0 0 6px;
+}
+
+.mr-field select,
+.mr-field input[type="date"] {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 14px;
+border: 1px solid rgba(0,0,0,0.08);
+background: rgba(255,255,255,0.9);
+color: #111;
+  outline: none;    
+}
+
+.mr-actions {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.mr-btnPrimary,
+.mr-btnGhost,
+.mr-btnDanger,
+.mr-btnDisabled {
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  font-weight: 600;
+}
+
+.mr-btnPrimary {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.mr-btnDanger {
+  background: rgba(255, 0, 0, 0.12);
+  border-color: rgba(255, 0, 0, 0.22);
+}
+
+.mr-btnDisabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.mr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mr-card {
+border: 1px solid rgba(0,0,0,0.06);
+background: rgba(255,255,255,0.9);
+box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.mr-cardImgWrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.mr-cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.mr-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.mr-cardBody {
+  padding: 12px;
+}
+
+.mr-cardTop {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mr-cardTitle {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.mr-cardMeta {
+  margin: 6px 0 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.mr-cardPrice {
+  text-align: right;
+  min-width: 110px;
+}
+
+.mr-price {
+  display: block;
+  font-weight: 800;
+}
+
+.mr-nights {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+.mr-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.mr-dateBox {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.mr-dateLabel {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.mr-dateValue {
+  display: block;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.mr-cardActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.mr-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+}
+
+.mr-emptyIcon {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.mr-emptyActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+  .mr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mr-filterRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .mr-actions {
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .mr-grid {
+    grid-template-columns: 1fr;
+  }
+  .mr-stats {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+  .mr-filterRow {
+    grid-template-columns: 1fr;
+  }
+}
+/* Badges por status (tema claro, estilo Airbnb) */
+.mr-badge {
+  background: rgba(255,255,255,0.92);
+  color: rgba(0,0,0,0.85);
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.mr-badge.Confirmada {
+  background: rgba(52, 199, 89, 0.14);
+  border-color: rgba(52, 199, 89, 0.28);
+}
+
+.mr-badge.Em-andamento {
+  background: rgba(255, 204, 0, 0.18);
+  border-color: rgba(255, 204, 0, 0.35);
+}
+
+.mr-badge.Finalizada {
+  background: rgba(0, 122, 255, 0.14);
+  border-color: rgba(0, 122, 255, 0.28);
+}
+
+.mr-badge.Cancelada {
+  background: rgba(255, 59, 48, 0.14);
+  border-color: rgba(255, 59, 48, 0.28);
+}
+.mr-sectionTitle{
+  margin: 16px 0 10px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+/* ===== Airbnb vibe (Sugestões em carrossel) ===== */
+
+.mr-carousel{
+  display:flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 6px 2px 14px;
+  scroll-snap-type: x mandatory;
+}
+
+.mr-carousel::-webkit-scrollbar{ height: 10px; }
+.mr-carousel::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,.12);
+  border-radius: 999px;
+}
+.mr-carousel::-webkit-scrollbar-track{
+  background: rgba(0,0,0,.04);
+  border-radius: 999px;
+}
+
+.mr-card--air{
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+.mr-cardImgWrap--air{ height: 180px; }
+
+.mr-pill{
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(0,0,0,.10);
+}
+
+.mr-heart{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.92);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mr-heart:hover{ transform: scale(1.03); }
+
+.mr-airTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.mr-cardTitle--air{ font-size: 15px; margin: 0; line-height: 1.2; }
+
+.mr-rating{ font-size: 13px; font-weight: 800; white-space: nowrap; }
+
+.mr-airMeta{
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.65);
+}
+
+.mr-airPrice{
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.85);
+}
+
+.mr-airActions{
+  display:flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.mr-linkBtn{
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  color: rgba(0,0,0,.85);
+}
+
+.mr-linkBtn:hover{ text-decoration: underline; }
+.mr-suggestions{
+  margin: 10px 0 18px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.06);
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(10px);
+}
+
+.mr-sugHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mr-sectionSub{
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.60);
+}
+
+.mr-sugActions{
+  display:flex;
+  gap: 8px;
+}
+
+.mr-arrow{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.95);
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mr-arrow:hover{
+  transform: translateY(-1px);
+}
+
+.mr-chips{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.mr-chip{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.9);
+  cursor:pointer;
+  font-weight: 800;
+  font-size: 13px;
+  opacity: .85;
+}
+
+.mr-chip.active{
+  opacity: 1;
+  background: rgba(0,0,0,.92);
+  color: #fff;
+  border-color: rgba(0,0,0,.92);
+}
+
+/* carrossel */
+.mr-carousel{
+  display:flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 12px 2px 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.mr-carousel::-webkit-scrollbar{ height: 10px; }
+.mr-carousel::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,.12);
+  border-radius: 999px;
+}
+.mr-carousel::-webkit-scrollbar-track{
+  background: rgba(0,0,0,.04);
+  border-radius: 999px;
+}
+
+.mr-card--air{
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  overflow:hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.mr-card--air:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.10);
+}
+
+.mr-cardImgWrap--air{ height: 180px; position: relative; }
+
+.mr-pill{
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(0,0,0,.10);
+}
+
+.mr-heart{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.92);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  transform-origin: center;
+}
+
+.mr-heart:hover{ transform: scale(1.06); }
+
+.mr-heart.saved{
+  border-color: rgba(255,59,48,.25);
+  background: rgba(255,59,48,.10);
+}
+
+.mr-airTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.mr-cardTitle--air{
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.mr-rating{
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.mr-airMeta{
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.65);
+}
+
+.mr-airPrice{
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: rgba(0,0,0,.85);
+}
+
+.mr-airActions{
+  display:flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.mr-linkBtn{
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 13px;
+  color: rgba(0,0,0,.85);
+}
+
+.mr-linkBtn:hover{ text-decoration: underline; }
+/* =========================
+   FIX: remover "amarelo" (herança de CSS global) só nesta página
+   ========================= */
+.mr-page mark{
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+.mr-page :is(h1,h2,h3,p,span,label,strong){
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* seleção de texto (quando arrasta o mouse) */
+.mr-page ::selection{
+  background: rgba(255, 56, 92, 0.22);
+}
+
+/* foco feio (amarelo) em inputs/botões */
+.mr-page :is(button,input,select,textarea):focus{
+  outline: none;
+}
+
+.mr-page :is(button,input,select,textarea):focus-visible{
+  outline: 3px solid rgba(255, 56, 92, 0.28);
+  outline-offset: 2px;
+  border-color: rgba(255, 56, 92, 0.35);
+}
+.mr-title{
+  font-size: 34px;
+  margin: 0;
+  letter-spacing: -0.03em;
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.mr-title .mr-titleAccent{
+  background: linear-gradient(90deg, #ff7a18, #ff3d81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mr-subtitle{
+  margin: 10px 0 0;
+  opacity: .78;
+  line-height: 1.4;
+  max-width: 560px;
+}
+/* =========================
+   FIX DEFINITIVO: remove amarelo herdado de CSS global (só Reservas)
+   ========================= */
+
+/* se você estiver com Ctrl+F ativo no navegador, ele marca amarelo — mas isso aqui é CSS */
+.mr-page :is(h1,h2,h3,h4,p,span,strong,small,label,button,a,li){
+  background-color: transparent !important;
+}
+
+/* labels / títulos específicos */
+.mr-page .mr-field label,
+.mr-page .mr-statLabel,
+.mr-page .mr-statValue,
+.mr-page .mr-title,
+.mr-page .mr-subtitle{
+  background-color: transparent !important;
+}
+
+/* texto dos botões (às vezes herda background em span) */
+.mr-page button span{
+  background-color: transparent !important;
+}
+
+/* título com gradiente (personalizado) */
+.mr-title{
+  font-size: 34px;
+  margin: 0;
+  letter-spacing: -0.03em;
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.mr-titleAccent{
+  background: linear-gradient(90deg, #ff7a18, #ff3d81) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+.mr-title{
+  font-size: 34px;
+  margin: 0;
+  letter-spacing: -0.03em;
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.mr-titleAccent{
+  background: linear-gradient(90deg, #ff7a18, #ff3d81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Título: "Reservas" rosa */
+.mr-titleAccent{
+  background: linear-gradient(90deg, #ff385c, #ff3d81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
