@@ -11,7 +11,10 @@ import Explorar from "./pages/Explorar.jsx";
 import Tours from "./pages/Tours.jsx";
 import Reservas from "./pages/Reservas.jsx";
 import CityPage from "./pages/CityPage.jsx";
-import Planos from "./pages/Planos.jsx"; // ✅ ADD
+import Planos from "./pages/Planos.jsx";
+
+import Favoritos from "./pages/Favoritos.jsx";     // ✅ ADD
+import Recompensas from "./pages/Recompensas.jsx"; // ✅ ADD
 
 export default function App() {
   return (
@@ -33,7 +36,10 @@ export default function App() {
           <Route path="explorar" element={<Explorar />} />
           <Route path="tours" element={<Tours />} />
           <Route path="reservas" element={<Reservas />} />
-          <Route path="planos" element={<Planos />} /> {/* ✅ ADD */}
+          <Route path="planos" element={<Planos />} />
+
+          <Route path="favoritos" element={<Favoritos />} />         {/* ✅ ADD */}
+          <Route path="recompensas" element={<Recompensas />} />     {/* ✅ ADD */}
 
           <Route path="cidade/:cityName" element={<CityPage />} />
         </Route>

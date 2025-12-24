@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/reservas.css";
+import { toggleFavorite, isFavorite } from "../services/favoritesStore";
 
 // Reservas começam vazias (Opção B)
 const SUGESTOES = [
@@ -58,7 +59,6 @@ const SUGESTOES = [
   },
 ];
 
-
 const TABS = ["Todas", "Confirmada", "Em andamento", "Finalizada", "Cancelada"];
 
 function formatDateBR(iso) {
@@ -87,34 +87,48 @@ export default function Reservas() {
   const [type, setType] = useState("Todos");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-// favoritos (para o coração)
-const [saved, setSaved] = useState(() => new Set());
 
-// categoria para deixar mais divertido
-const CATS = ["Tudo", "Praia", "Cidade", "Natureza", "Luxo"];
-const [cat, setCat] = useState("Tudo");
+  // categoria para deixar mais divertido
+  const CATS = ["Tudo", "Praia", "Cidade", "Natureza", "Luxo"];
+  const [cat, setCat] = useState("Tudo");
 
-// carrossel refs
-const scrollRef = (node) => {
-  // guardamos no window só pra ser simples (sem useRef), pode trocar por useRef depois
-  window.__mrCarousel = node;
-};
+  // ✅ força re-render quando favoritar/desfavoritar (pra coração atualizar na hora)
+  const [favTick, setFavTick] = useState(0);
 
-function toggleSaved(id) {
-  setSaved((prev) => {
-    const next = new Set(prev);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    return next;
-  });
-}
+  // carrossel ref simples (sem useRef)
+  const scrollRef = (node) => {
+    window.__mrCarousel = node;
+  };
 
-function scrollCarousel(dir) {
-  const el = window.__mrCarousel;
-  if (!el) return;
-  const step = 320; // distancia de scroll (ajusta se quiser)
-  el.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
-}
+  function scrollCarousel(dir) {
+    const el = window.__mrCarousel;
+    if (!el) return;
+    const step = 320;
+    el.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
+  }
+
+  // ❤️ Favorito nas sugestões usando store (NÃO navega)
+  function onHeartSuggestion(p, e) {
+    e?.stopPropagation?.();
+
+    const favId = `stay-${p.id}`;
+
+    toggleFavorite({
+      id: favId,
+      title: p.title,
+      subtitle: `${p.city}, ${p.country} • ${p.type}`,
+      img: p.img,
+      meta: {
+        rating: p.rating,
+        priceNight: p.priceNight,
+        currency: p.currency,
+        tags: p.tags,
+        pill: p.pill,
+      },
+    });
+
+    setFavTick((v) => v + 1); // ✅ atualiza ícone na hora
+  }
 
   const countries = useMemo(() => {
     const list = Array.from(new Set(reservas.map((r) => r.country))).sort();
@@ -181,7 +195,7 @@ function scrollCarousel(dir) {
     <div className="mr-page">
       <header className="mr-header">
         <div className="mr-titleWrap">
-         <h1 className="mr-title">Minhas Reservas</h1>
+          <h1 className="mr-title">Minhas Reservas</h1>
 
           <p className="mr-subtitle">
             Acompanhe suas hospedagens e status — e veja sugestões tipo Airbnb.
@@ -281,158 +295,122 @@ function scrollCarousel(dir) {
           </div>
         </div>
       </section>
-<section className="mr-suggestions">
-  <div className="mr-sugHeader">
-    <div>
-      <h2 className="mr-sectionTitle">Sugestões pra você</h2>
-      <p className="mr-sectionSub">Achadinhos com vibe Airbnb pra sua próxima viagem ✨</p>
-    </div>
 
-    <div className="mr-sugActions">
-      <button className="mr-arrow" type="button" onClick={() => scrollCarousel("left")} aria-label="Voltar">
-        ‹
-      </button>
-      <button className="mr-arrow" type="button" onClick={() => scrollCarousel("right")} aria-label="Avançar">
-        ›
-      </button>
-    </div>
-  </div>
-
-  <div className="mr-chips">
-    {CATS.map((c) => (
-      <button
-        key={c}
-        className={`mr-chip ${cat === c ? "active" : ""}`}
-        type="button"
-        onClick={() => setCat(c)}
-      >
-        {c}
-      </button>
-    ))}
-  </div>
-
-  <div className="mr-carousel" ref={scrollRef}>
-    {SUGESTOES
-      .filter((p) => (cat === "Tudo" ? true : (p.tags || []).includes(cat)))
-      .map((p) => {
-        const isSaved = saved.has(p.id);
-
-        return (
-          <article key={p.id} className="mr-card mr-card--air">
-            <div className="mr-cardImgWrap mr-cardImgWrap--air">
-              <img className="mr-cardImg" src={p.img} alt={p.title} loading="lazy" />
-
-              <span className="mr-pill">{p.pill || "Recomendado"}</span>
-
-              <button
-                className={`mr-heart ${isSaved ? "saved" : ""}`}
-                type="button"
-                onClick={() => toggleSaved(p.id)}
-                aria-label={isSaved ? "Remover dos salvos" : "Salvar"}
-                title={isSaved ? "Salvo" : "Salvar"}
-              >
-                {isSaved ? "♥" : "♡"}
-              </button>
-            </div>
-
-            <div className="mr-cardBody mr-cardBody--air">
-              <div className="mr-airTop">
-                <h3 className="mr-cardTitle mr-cardTitle--air">{p.title}</h3>
-                <div className="mr-rating">★ {p.rating}</div>
-              </div>
-
-              <p className="mr-airMeta">
-                {p.city}, {p.country} • {p.type}
-              </p>
-
-              <p className="mr-airPrice">
-                <strong>
-                  {p.currency} {p.priceNight}
-                </strong>{" "}
-                noite
-              </p>
-
-              <div className="mr-airActions">
-                <button className="mr-linkBtn" type="button" onClick={() => alert("Detalhes (futuro)")}>
-                  Ver detalhes
-                </button>
-                <button className="mr-linkBtn" type="button" onClick={() => toggleSaved(p.id)}>
-                  {isSaved ? "Salvo" : "Salvar"}
-                </button>
-              </div>
-            </div>
-          </article>
-        );
-      })}
-  </div>
-</section>
-
-      {filtered.length === 0 ? (
-        <>
-          <div className="mr-empty">
-            <div className="mr-emptyIcon">🧳</div>
-            <h2>Você ainda não tem reservas</h2>
-            <p>Quando você reservar, elas vão aparecer aqui automaticamente.</p>
-            <div className="mr-emptyActions">
-              <button className="mr-btnPrimary" onClick={() => navigate("/explorar")} type="button">
-                Ir para Explorar
-              </button>
-              <button className="mr-btnGhost" onClick={resetFilters} type="button">
-                Limpar filtros
-              </button>
-            </div>
+      {/* SUGESTÕES (AIRBNB STYLE) */}
+      <section className="mr-suggestions">
+        <div className="mr-sugHeader">
+          <div>
+            <h2 className="mr-sectionTitle">Sugestões pra você</h2>
+            <p className="mr-sectionSub">
+              Achadinhos com vibe Airbnb pra sua próxima viagem ✨
+            </p>
           </div>
 
-          <h2 className="mr-sectionTitle">Sugestões para você</h2>
-
-<div className="mr-carousel">
-  {SUGESTOES.map((p) => (
-    <article key={p.id} className="mr-card mr-card--air">
-      <div className="mr-cardImgWrap mr-cardImgWrap--air">
-        <img className="mr-cardImg" src={p.img} alt={p.title} loading="lazy" />
-        <span className="mr-pill">SUPERHOST</span>
-
-        <button
-          className="mr-heart"
-          type="button"
-          onClick={() => alert("Salvar (futuro)")}
-          aria-label="Salvar"
-        >
-          ♡
-        </button>
-      </div>
-
-      <div className="mr-cardBody mr-cardBody--air">
-        <div className="mr-airTop">
-          <h3 className="mr-cardTitle mr-cardTitle--air">{p.title}</h3>
-          <div className="mr-rating">★ {p.rating}</div>
+          <div className="mr-sugActions">
+            <button
+              className="mr-arrow"
+              type="button"
+              onClick={() => scrollCarousel("left")}
+              aria-label="Voltar"
+            >
+              ‹
+            </button>
+            <button
+              className="mr-arrow"
+              type="button"
+              onClick={() => scrollCarousel("right")}
+              aria-label="Avançar"
+            >
+              ›
+            </button>
+          </div>
         </div>
 
-        <p className="mr-airMeta">
-          {p.city}, {p.country} • {p.type}
-        </p>
-
-        <p className="mr-airPrice">
-          <strong>
-            {p.currency} {p.priceNight}
-          </strong>{" "}
-          noite
-        </p>
-
-        <div className="mr-airActions">
-          <button className="mr-linkBtn" type="button" onClick={() => alert("Detalhes (futuro)")}>
-            Ver detalhes
-          </button>
-          <button className="mr-linkBtn" type="button" onClick={() => alert("Salvar (futuro)")}>
-            Salvar
-          </button>
+        <div className="mr-chips">
+          {CATS.map((c) => (
+            <button
+              key={c}
+              className={`mr-chip ${cat === c ? "active" : ""}`}
+              type="button"
+              onClick={() => setCat(c)}
+            >
+              {c}
+            </button>
+          ))}
         </div>
-      </div>
-    </article>
-  ))}
-</div>
 
-        </>
+        <div className="mr-carousel" ref={scrollRef}>
+          {SUGESTOES
+            .filter((p) => (cat === "Tudo" ? true : (p.tags || []).includes(cat)))
+            .map((p) => {
+              const favId = `stay-${p.id}`;
+              const fav = isFavorite(favId);
+
+              return (
+                <article key={p.id} className="mr-card mr-card--air">
+                  <div className="mr-cardImgWrap mr-cardImgWrap--air">
+                    <img className="mr-cardImg" src={p.img} alt={p.title} loading="lazy" />
+
+                    <span className="mr-pill">{p.pill || "Recomendado"}</span>
+
+                    <button
+                      className={`mr-heart ${fav ? "saved" : ""}`}
+                      type="button"
+                      onClick={(e) => onHeartSuggestion(p, e)}
+                      aria-label={fav ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                      title={fav ? "Favorito" : "Favoritar"}
+                    >
+                      {fav ? "♥" : "♡"}
+                    </button>
+                  </div>
+
+                  <div className="mr-cardBody mr-cardBody--air">
+                    <div className="mr-airTop">
+                      <h3 className="mr-cardTitle mr-cardTitle--air">{p.title}</h3>
+                      <div className="mr-rating">★ {p.rating}</div>
+                    </div>
+
+                    <p className="mr-airMeta">
+                      {p.city}, {p.country} • {p.type}
+                    </p>
+
+                    <p className="mr-airPrice">
+                      <strong>
+                        {p.currency} {p.priceNight}
+                      </strong>{" "}
+                      noite
+                    </p>
+
+                    <div className="mr-airActions">
+                      <button className="mr-linkBtn" type="button" onClick={() => alert("Detalhes (futuro)")}>
+                        Ver detalhes
+                      </button>
+                      <button className="mr-linkBtn" type="button" onClick={(e) => onHeartSuggestion(p, e)}>
+                        {fav ? "Salvo" : "Salvar"}
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+        </div>
+      </section>
+
+      {/* LISTA / EMPTY */}
+      {filtered.length === 0 ? (
+        <div className="mr-empty">
+          <div className="mr-emptyIcon">🧳</div>
+          <h2>Você ainda não tem reservas</h2>
+          <p>Quando você reservar, elas vão aparecer aqui automaticamente.</p>
+          <div className="mr-emptyActions">
+            <button className="mr-btnPrimary" onClick={() => navigate("/explorar")} type="button">
+              Ir para Explorar
+            </button>
+            <button className="mr-btnGhost" onClick={resetFilters} type="button">
+              Limpar filtros
+            </button>
+          </div>
+        </div>
       ) : (
         <div className="mr-grid">
           {filtered.map((r) => (
@@ -454,7 +432,9 @@ function scrollCarousel(dir) {
                     <span className="mr-price">
                       {r.currency} {r.total}
                     </span>
-                    <span className="mr-nights">{nightsBetween(r.checkIn, r.checkOut)} noites</span>
+                    <span className="mr-nights">
+                      {nightsBetween(r.checkIn, r.checkOut)} noites
+                    </span>
                   </div>
                 </div>
 
@@ -493,6 +473,9 @@ function scrollCarousel(dir) {
           ))}
         </div>
       )}
+
+      {/* só pra não ficar “unused” em alguns lints */}
+      <span style={{ display: "none" }}>{favTick}</span>
     </div>
   );
 }

@@ -1,9 +1,24 @@
 import { useMemo, useState } from "react";
-import { FaStar, FaRegHeart, FaHeart, FaSearch, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import {
+  FaStar,
+  FaRegHeart,
+  FaHeart,
+  FaSearch,
+  FaMapMarkerAlt,
+  FaClock,
+} from "react-icons/fa";
 import "../styles/tours.css";
+import { toggleFavorite, isFavorite } from "../services/favoritesStore";
 
-
-const CATEGORIES = ["Todos", "Tours Guiados", "Atividades", "Experiências", "Workshops", "Excursões", "Shows"];
+const CATEGORIES = [
+  "Todos",
+  "Tours Guiados",
+  "Atividades",
+  "Experiências",
+  "Workshops",
+  "Excursões",
+  "Shows",
+];
 
 const DATA = [
   {
@@ -18,7 +33,8 @@ const DATA = [
     duration: "2h",
     highlight: true,
     tags: ["Cultura", "Noite"],
-    image: "https://images.unsplash.com/photo-1507924538820-ede94a04019d?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1507924538820-ede94a04019d?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 2,
@@ -32,7 +48,8 @@ const DATA = [
     duration: "3h",
     highlight: true,
     tags: ["Gastronomia", "Premium"],
-    image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 3,
@@ -46,7 +63,8 @@ const DATA = [
     duration: "2h",
     highlight: true,
     tags: ["História", "Centro"],
-    image: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 4,
@@ -60,7 +78,8 @@ const DATA = [
     duration: "1h30",
     highlight: false,
     tags: ["Mar", "Romântico"],
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 5,
@@ -74,7 +93,8 @@ const DATA = [
     duration: "4h",
     highlight: false,
     tags: ["Natureza", "Aventura"],
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 6,
@@ -88,7 +108,8 @@ const DATA = [
     duration: "3h",
     highlight: false,
     tags: ["Criativo", "Cidade"],
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 7,
@@ -102,7 +123,8 @@ const DATA = [
     duration: "2h",
     highlight: false,
     tags: ["História", "Arte"],
-    image: "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1200&q=60",
   },
   {
     id: 8,
@@ -116,23 +138,31 @@ const DATA = [
     duration: "3h",
     highlight: true,
     tags: ["Música", "Noite"],
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=60",
+    image:
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=60",
   },
 ];
 
 function formatBRL(value) {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
 }
 
 export default function Tours() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [city, setCity] = useState("Todas");
-  const [favorites, setFavorites] = useState(() => new Set());
   const [bookedToday, setBookedToday] = useState(0);
 
+  // ✅ força re-render quando favoritar/desfavoritar
+  const [favTick, setFavTick] = useState(0);
+
   const cities = useMemo(() => {
-    const unique = Array.from(new Set(DATA.map((i) => i.city))).sort((a, b) => a.localeCompare(b));
+    const unique = Array.from(new Set(DATA.map((i) => i.city))).sort((a, b) =>
+      a.localeCompare(b)
+    );
     return ["Todas", ...unique];
   }, []);
 
@@ -140,12 +170,15 @@ export default function Tours() {
     const s = search.trim().toLowerCase();
 
     return DATA.filter((item) => {
-      const matchCategory = activeCategory === "Todos" ? true : item.category === activeCategory;
+      const matchCategory =
+        activeCategory === "Todos" ? true : item.category === activeCategory;
       const matchCity = city === "Todas" ? true : item.city === city;
       const matchSearch =
         s.length === 0
           ? true
-          : `${item.title} ${item.city} ${item.uf} ${item.category} ${item.tags.join(" ")}`
+          : `${item.title} ${item.city} ${item.uf} ${item.category} ${item.tags.join(
+              " "
+            )}`
               .toLowerCase()
               .includes(s);
 
@@ -157,24 +190,36 @@ export default function Tours() {
   const minPrice = useMemo(() => Math.min(...DATA.map((i) => i.priceFrom)), []);
 
   const bestRatedSection = useMemo(() => {
-    return [...DATA]
-      .sort((a, b) => b.rating - a.rating)
-      .slice(0, 6);
+    return [...DATA].sort((a, b) => b.rating - a.rating).slice(0, 6);
   }, []);
 
-  function toggleFavorite(id) {
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
+  function onHeartClick(item, e) {
+    e?.stopPropagation?.();
+
+    const favId = `tour-${item.id}`;
+
+    toggleFavorite({
+      id: favId,
+      title: item.title,
+      subtitle: `${item.city}/${item.uf}`,
+      img: item.image,
+      meta: {
+        category: item.category,
+        duration: item.duration,
+        priceFrom: item.priceFrom,
+      },
     });
+
+    setFavTick((v) => v + 1); // ✅ atualiza ícone na hora
   }
 
   function reserveTour(item) {
-    // Aqui depois a gente integra com backend / localStorage.
     setBookedToday((v) => v + 1);
-    alert(`Reserva simulada ✅\n\n${item.title} — ${item.city}/${item.uf}\nA partir de ${formatBRL(item.priceFrom)}`);
+    alert(
+      `Reserva simulada ✅\n\n${item.title} — ${item.city}/${item.uf}\nA partir de ${formatBRL(
+        item.priceFrom
+      )}`
+    );
   }
 
   return (
@@ -183,7 +228,9 @@ export default function Tours() {
         <h1 className="toursTitle">
           Tours & <span>Atividades</span>
         </h1>
-        <p className="toursSubtitle">Reserve experiências inesquecíveis nos melhores destinos</p>
+        <p className="toursSubtitle">
+          Reserve experiências inesquecíveis nos melhores destinos
+        </p>
       </div>
 
       <div className="toursStats">
@@ -235,7 +282,11 @@ export default function Tours() {
 
         <div className="cityWrap">
           <FaMapMarkerAlt className="cityIcon" />
-          <select className="citySelect" value={city} onChange={(e) => setCity(e.target.value)}>
+          <select
+            className="citySelect"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          >
             {cities.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -263,60 +314,75 @@ export default function Tours() {
       </div>
 
       <div className="cardsGrid">
-        {bestRatedSection.map((item) => (
-          <div key={item.id} className="tourCard">
-            <div className="cardImage">
-              <img src={item.image} alt={item.title} />
-              <div className="badgesTop">
-                <span className="badge soft">{item.category.slice(0, -1) || item.category}</span>
-                <span className="badge soft">{item.difficulty}</span>
-              </div>
+        {bestRatedSection.map((item) => {
+          const favId = `tour-${item.id}`;
+          const fav = isFavorite(favId);
 
-              {item.highlight && <span className="badge highlight">⭐ Destaque</span>}
-
-              <button
-                className="favBtn"
-                onClick={() => toggleFavorite(item.id)}
-                aria-label="Favoritar"
-                type="button"
-              >
-                {favorites.has(item.id) ? <FaHeart /> : <FaRegHeart />}
-              </button>
-            </div>
-
-            <div className="cardBody">
-              <div className="cardMeta">
-                <span className="place">
-                  {item.city}/{item.uf}
-                </span>
-                <span className="rating">
-                  <FaStar /> {item.rating.toFixed(1)}
-                </span>
-              </div>
-
-              <h3 className="cardTitle">{item.title}</h3>
-
-              <div className="cardInfo">
-                <span className="infoItem">
-                  <FaClock /> {item.duration}
-                </span>
-                <span className="priceFrom">A partir de {formatBRL(item.priceFrom)}</span>
-              </div>
-
-              <div className="tagsRow">
-                {item.tags.slice(0, 3).map((t) => (
-                  <span key={t} className="tag">
-                    {t}
+          return (
+            <div key={item.id} className="tourCard">
+              <div className="cardImage">
+                <img src={item.image} alt={item.title} />
+                <div className="badgesTop">
+                  <span className="badge soft">
+                    {item.category.slice(0, -1) || item.category}
                   </span>
-                ))}
+                  <span className="badge soft">{item.difficulty}</span>
+                </div>
+
+                {item.highlight && (
+                  <span className="badge highlight">⭐ Destaque</span>
+                )}
+
+                <button
+                  className="favBtn"
+                  onClick={(e) => onHeartClick(item, e)}
+                  aria-label="Favoritar"
+                  type="button"
+                >
+                  {fav ? <FaHeart /> : <FaRegHeart />}
+                </button>
               </div>
 
-              <button className="reserveBtn" onClick={() => reserveTour(item)} type="button">
-                Reservar
-              </button>
+              <div className="cardBody">
+                <div className="cardMeta">
+                  <span className="place">
+                    {item.city}/{item.uf}
+                  </span>
+                  <span className="rating">
+                    <FaStar /> {item.rating.toFixed(1)}
+                  </span>
+                </div>
+
+                <h3 className="cardTitle">{item.title}</h3>
+
+                <div className="cardInfo">
+                  <span className="infoItem">
+                    <FaClock /> {item.duration}
+                  </span>
+                  <span className="priceFrom">
+                    A partir de {formatBRL(item.priceFrom)}
+                  </span>
+                </div>
+
+                <div className="tagsRow">
+                  {item.tags.slice(0, 3).map((t) => (
+                    <span key={t} className="tag">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <button
+                  className="reserveBtn"
+                  onClick={() => reserveTour(item)}
+                  type="button"
+                >
+                  Reservar
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="sectionTitle">
@@ -325,61 +391,79 @@ export default function Tours() {
       </div>
 
       <div className="cardsGrid">
-        {filtered.map((item) => (
-          <div key={item.id} className="tourCard">
-            <div className="cardImage">
-              <img src={item.image} alt={item.title} />
-              <div className="badgesTop">
-                <span className="badge soft">{item.category.slice(0, -1) || item.category}</span>
-                <span className="badge soft">{item.difficulty}</span>
-              </div>
+        {filtered.map((item) => {
+          const favId = `tour-${item.id}`;
+          const fav = isFavorite(favId);
 
-              {item.highlight && <span className="badge highlight">⭐ Destaque</span>}
-
-              <button
-                className="favBtn"
-                onClick={() => toggleFavorite(item.id)}
-                aria-label="Favoritar"
-                type="button"
-              >
-                {favorites.has(item.id) ? <FaHeart /> : <FaRegHeart />}
-              </button>
-            </div>
-
-            <div className="cardBody">
-              <div className="cardMeta">
-                <span className="place">
-                  {item.city}/{item.uf}
-                </span>
-                <span className="rating">
-                  <FaStar /> {item.rating.toFixed(1)}
-                </span>
-              </div>
-
-              <h3 className="cardTitle">{item.title}</h3>
-
-              <div className="cardInfo">
-                <span className="infoItem">
-                  <FaClock /> {item.duration}
-                </span>
-                <span className="priceFrom">A partir de {formatBRL(item.priceFrom)}</span>
-              </div>
-
-              <div className="tagsRow">
-                {item.tags.slice(0, 3).map((t) => (
-                  <span key={t} className="tag">
-                    {t}
+          return (
+            <div key={item.id} className="tourCard">
+              <div className="cardImage">
+                <img src={item.image} alt={item.title} />
+                <div className="badgesTop">
+                  <span className="badge soft">
+                    {item.category.slice(0, -1) || item.category}
                   </span>
-                ))}
+                  <span className="badge soft">{item.difficulty}</span>
+                </div>
+
+                {item.highlight && (
+                  <span className="badge highlight">⭐ Destaque</span>
+                )}
+
+                <button
+                  className="favBtn"
+                  onClick={(e) => onHeartClick(item, e)}
+                  aria-label="Favoritar"
+                  type="button"
+                >
+                  {fav ? <FaHeart /> : <FaRegHeart />}
+                </button>
               </div>
 
-              <button className="reserveBtn" onClick={() => reserveTour(item)} type="button">
-                Reservar
-              </button>
+              <div className="cardBody">
+                <div className="cardMeta">
+                  <span className="place">
+                    {item.city}/{item.uf}
+                  </span>
+                  <span className="rating">
+                    <FaStar /> {item.rating.toFixed(1)}
+                  </span>
+                </div>
+
+                <h3 className="cardTitle">{item.title}</h3>
+
+                <div className="cardInfo">
+                  <span className="infoItem">
+                    <FaClock /> {item.duration}
+                  </span>
+                  <span className="priceFrom">
+                    A partir de {formatBRL(item.priceFrom)}
+                  </span>
+                </div>
+
+                <div className="tagsRow">
+                  {item.tags.slice(0, 3).map((t) => (
+                    <span key={t} className="tag">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <button
+                  className="reserveBtn"
+                  onClick={() => reserveTour(item)}
+                  type="button"
+                >
+                  Reservar
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+
+      {/* só pra não ficar “unused” em alguns lints */}
+      <span style={{ display: "none" }}>{favTick}</span>
     </div>
   );
 }

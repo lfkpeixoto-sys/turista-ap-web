@@ -11,8 +11,8 @@ const NAV = [
 { label: "Minhas Reservas", to: "reservas", icon: "📅" },
 { label: "Planos", to: "planos", icon: "💎" },
 
-  { label: "Favoritos", to: "favoritos", disabled: true, icon: "❤️" },
-  { label: "Recompensas", to: "recompensas", disabled: true, icon: "🎁" },
+  { label: "Favoritos", to: "favoritos", icon: "❤️" },
+  { label: "Recompensas", to: "recompensas", icon: "🎁" },
   { label: "Ranking", to: "ranking", disabled: true, icon: "🏆" },
   { label: "Modo Offline", to: "offline", disabled: true, icon: "📴" },
 ];
