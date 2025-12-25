@@ -1,0 +1,252 @@
+/* src/styles/ranking.css */
+.rk-page{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 26px 22px 40px;
+}
+
+.rk-header{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom: 18px;
+}
+
+.rk-title{
+  font-size: 54px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.rk-title span{
+  background: linear-gradient(90deg, #ff7a18, #ff3d81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rk-sub{
+  margin: 0;
+  color: #4b5563;
+  font-size: 16px;
+}
+
+.rk-switch{
+  display:flex;
+  gap:10px;
+  margin-top: 8px;
+}
+
+.rk-switchBtn{
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.75);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.rk-switchBtn.active{
+  border-color: rgba(255,122,24,0.55);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.rk-meCard{
+  border: 2px solid rgba(255,122,24,0.35);
+  background: rgba(255,255,255,0.70);
+  border-radius: 16px;
+  padding: 18px 18px;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  margin: 18px 0 22px;
+}
+
+.rk-meLeft{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.rk-mePos{
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff3d81);
+  display:grid;
+  place-items:center;
+  font-size: 18px;
+  color:#fff;
+  font-weight: 900;
+}
+.rk-meInfo{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.rk-meLabel{
+  font-size: 13px;
+  color:#6b7280;
+}
+.rk-meName{
+  font-size: 18px;
+  font-weight: 900;
+}
+.rk-pill{
+  width: fit-content;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #111827;
+  color:#fff;
+  opacity: 0.9;
+}
+
+.rk-meRight{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.rk-scoreValue{
+  font-size: 30px;
+  font-weight: 900;
+  text-align:right;
+}
+.rk-scoreLabel{
+  font-size: 13px;
+  color:#6b7280;
+  text-align:right;
+}
+
+.rk-board{
+  border-radius: 16px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.rk-boardHead{
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.rk-boardTitle{
+  font-weight: 900;
+}
+
+.rk-list{
+  display:flex;
+  flex-direction:column;
+}
+
+.rk-row{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.rk-row:first-child{ border-top: none; }
+
+.rk-row.me{
+  background: rgba(255, 224, 196, 0.30);
+}
+
+.rk-colPos{
+  width: 70px;
+}
+
+.rk-posBadge{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+  background: rgba(0,0,0,0.06);
+}
+.rk-posBadge.pos-1{
+  background: linear-gradient(135deg, #ff7a18, #ff3d81);
+  color:#fff;
+}
+.rk-posBadge.pos-2{
+  background: rgba(59,130,246,0.20);
+}
+.rk-posBadge.pos-3{
+  background: rgba(168,85,247,0.20);
+}
+
+.rk-colUser{
+  flex: 1;
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  min-width: 200px;
+}
+
+.rk-avatar{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.20);
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+}
+
+.rk-userTop{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.rk-userName{
+  font-weight: 900;
+}
+.rk-you{
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,122,24,0.20);
+  border: 1px solid rgba(255,122,24,0.35);
+}
+
+.rk-userMeta{
+  font-size: 13px;
+  color:#6b7280;
+  display:flex;
+  gap: 8px;
+  align-items:center;
+}
+.rk-dot{ opacity: 0.7; }
+.rk-rank{
+  font-weight: 800;
+  text-transform: lowercase;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.rk-colScore{
+  width: 110px;
+  text-align:right;
+}
+.rk-scoreNum{
+  font-size: 22px;
+  font-weight: 900;
+}
+.rk-scoreTxt{
+  font-size: 13px;
+  color:#6b7280;
+}
+
+.rk-footHint{
+  padding: 12px 18px 16px;
+  font-size: 13px;
+  color:#6b7280;
+}
+
+@media (max-width: 720px){
+  .rk-title{ font-size: 40px; }
+  .rk-colScore{ width: 90px; }
+  .rk-colPos{ width: 60px; }
+}

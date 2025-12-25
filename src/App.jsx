@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import MeuPainel from "./pages/MeuPainel.jsx";
 import EditarPerfil from "./pages/EditarPerfil.jsx";
+import Ranking from "./pages/Ranking.jsx";
 
 import Explorar from "./pages/Explorar.jsx";
 import Tours from "./pages/Tours.jsx";
@@ -15,6 +16,7 @@ import Planos from "./pages/Planos.jsx";
 
 import Favoritos from "./pages/Favoritos.jsx";     // ✅ ADD
 import Recompensas from "./pages/Recompensas.jsx"; // ✅ ADD
+import Offline from "./pages/Offline.jsx";
 
 export default function App() {
   return (
@@ -32,6 +34,7 @@ export default function App() {
         >
           <Route index element={<MeuPainel />} />
           <Route path="perfil/editar" element={<EditarPerfil />} />
+          <Route path="ranking" element={<Ranking />} />
 
           <Route path="explorar" element={<Explorar />} />
           <Route path="tours" element={<Tours />} />
@@ -40,6 +43,7 @@ export default function App() {
 
           <Route path="favoritos" element={<Favoritos />} />         {/* ✅ ADD */}
           <Route path="recompensas" element={<Recompensas />} />     {/* ✅ ADD */}
+           <Route path="offline" element={<Offline />} />
 
           <Route path="cidade/:cityName" element={<CityPage />} />
         </Route>

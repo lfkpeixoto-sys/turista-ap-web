@@ -13,8 +13,8 @@ const NAV = [
 
   { label: "Favoritos", to: "favoritos", icon: "❤️" },
   { label: "Recompensas", to: "recompensas", icon: "🎁" },
-  { label: "Ranking", to: "ranking", disabled: true, icon: "🏆" },
-  { label: "Modo Offline", to: "offline", disabled: true, icon: "📴" },
+  { label: "Ranking", to: "ranking", icon: "🏆" },
+  { label: "Modo Offline", to: "offline", icon: "📴" },
 ];
 
 export default function Dashboard() {
