@@ -1,32 +1,47 @@
-import { NavLink } from "react-router-dom";
-import "../index.css";
+import { NavLink } from "react-router-dom" ;
+ 
+import "../index.css" ;
+ 
 
-export default function Sidebar() {
+export default function Sidebar ( ) {
+   
   const links = [
     { name: "Explorar", path: "/explorar" },
-    { name: "Favoritos", path: "/favoritos" },
-    { name: "Tours", path: "/tours" },
-    { name: "Ranking", path: "/ranking" },
-    { name: "Modo Offline", path: "/offline" },
+    { nome : "Favoritos" , caminho : "/favoritos" },
+    { nome : "Passeios" , caminho : "/passeios" },
+    { nome : "Ranking" , caminho : "/ranking" },
+    { nome : "Modo Offline" , caminho : "/offline" },
   ];
 
-  return (
-    <aside className="sidebar">
-      <h2 className="logo">✈️ TuristaApp</h2>
+  retornar (
+    < aside className = "sidebar" > 
+      <divclassName="logo"> 
+        < img
+          className = "logoImg"
+          src = "/turista-logo.svg"
+          alt = "Logotipo do TuristaApp"
+          carregando = "preguiçoso"
+        />
 
-      <nav>
+        <div>​​
+          < div className = "logoTitle" > TuristaApp </ div > 
+          <divclassName="logoSub">Explore o mundo</div> 
+        </div>​​
+      </div>​​
+
+      <nenhum>​​
         {links.map((link) => (
-          <NavLink
-            key={link.name}
-            to={link.path}
-            className={({ isActive }) =>
-              isActive ? "sidebar-link active" : "sidebar-link"
+          < NavLink
+            chave = {link.name}
+            para = {link.path}
+            className = {({ isActive }) => 
+              isActive ? "link da barra lateral ativo" : "link da barra lateral"
             }
           >
             {link.name}
-          </NavLink>
+          </ NavLink >
         ))}
-      </nav>
-    </aside>
+      </ nenhum >
+    </aside>​​
   );
 }

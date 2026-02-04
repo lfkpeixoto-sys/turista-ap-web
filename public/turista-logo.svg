@@ -1,0 +1,30 @@
+< svg width = "512" height = "512" viewBox = "0 0 512 512" fill = "none" xmlns = "http://www.w3.org/2000/svg" role = "img" aria-label = "Logotipo do TuristaApp" >       
+  < defs >
+    < linearGradient id = "pin" x1 = "256" y1 = "20" x2 = "256" y2 = "492" gradientUnits = "userSpaceOnUse" >      
+      < stop stop-color = "#FF8C2A" /> 
+      < stop offset = "0.4" stop-color = "#20B7D5" />  
+      < stop offset = "1" stop-color = "#009A8F" />  
+    </linearGradient>​​
+    < linearGradient id = "wave" x1 = "170" y1 = "330" x2 = "340" y2 = "360" gradientUnits = "userSpaceOnUse" >      
+      < stop stop-color = "#0EA3B0" /> 
+      < stop offset = "1" stop-color = "#14D2B8" />  
+    </linearGradient>​​
+    < clipPath id = "clip" > 
+      < path d = "M256 20C168 20 96 92 96 180C96 282 256 492 256 492C256 492 416 282 416 180C416 92 344 20 256 20Z" /> 
+    </ clipPath >
+  </ defs >
+  < path d = "M256 20C168 20 96 92 96 180C96 282 256 492 256 492C256 492 416 282 416 180C416 92 344 20 256 20Z" fill = "url(#pin)" />  
+  < g clip-path = "url(#clip)" > 
+    < circle cx = "316" cy = "178" r = "52" fill = "#FFCB5C" />    
+    < path d = "M230 240C205 240 182 249 164 264C217 270 249 282 298 308C344 332 372 322 398 302C363 270 316 240 230 240Z" fill = "#008A9F" />  
+    < path d = "M126 330C152 352 188 366 222 366C274 366 318 340 352 340C374 340 398 348 416 360C376 388 330 404 274 404C212 404 172 382 126 330Z" fill = "url(#wave)" />  
+    < path d = "M230 238C234 198 248 168 272 148C270 186 258 222 246 240C240 248 230 248 230 238Z" fill = "#6C452A" />  
+    < path d = "M280 148C302 140 322 146 338 158C320 160 304 166 290 176C300 178 312 182 320 190C302 192 286 190 270 184C274 178 276 170 280 148Z" fill = "#10A57A" />  
+    < path d = "M276 156C258 152 242 156 230 164C244 170 258 178 266 190C248 188 234 182 220 172C226 168 234 156 256 144C260 150 266 154 276 156Z" fill = "#10A57A" />  
+    < path d = "M274 162C248 158 230 170 220 186C236 188 250 194 264 206C248 206 230 202 214 194C220 188 226 172 246 162C252 168 262 170 274 ​​162Z" fill = "#10A57A" />  
+  </ g >
+  < path d = "M394 94L470 120" stroke = "#0C1820" stroke-width = "14" stroke-linecap = "round" />    
+  < path d = "M394 94L402 62L436 100" fill = "#0C1820" />  
+  < circle cx = "402" cy = "62" r = "6" fill = "#0C1820" />    
+  < path d = "M284 454C296 434 308 410 319 384C332 352 344 316 354 280" stroke = "#008A9F" stroke-width = "12" stroke-linecap = "round" />    
+</ svg >

@@ -645,3 +645,171 @@
     line-height: 1.4;
   }
 }
+/* Top bar (busca + ordenação) */
+.panelTopBar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0 16px;
+}
+
+.searchWrap {
+  flex: 1;
+}
+
+.searchInput {
+  width: 100%;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0 14px;
+  outline: none;
+  background: rgba(255,255,255,0.8);
+}
+
+.searchInput:focus {
+  border-color: rgba(255, 87, 141, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 87, 141, 0.12);
+}
+
+.segmented {
+  display: inline-flex;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.segBtn {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.segBtn.active {
+  background: rgba(0,0,0,0.06);
+  opacity: 1;
+}
+
+/* Meta / Progresso */
+.goalCard {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 0 0 16px;
+}
+
+.goalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.goalTitle {
+  font-weight: 800;
+}
+
+.goalMeta {
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.goalBar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.goalFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff5a9c, #ff8a3d);
+}
+
+.goalHint {
+  margin-top: 10px;
+  opacity: 0.75;
+  font-weight: 600;
+}
+
+/* Empty actions */
+.emptyActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Form error */
+.formError {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 71, 87, 0.10);
+  border: 1px solid rgba(255, 71, 87, 0.25);
+  font-weight: 700;
+}
+/* Autocomplete */
+.autoWrap {
+  position: relative;
+}
+
+.autoList {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.autoItem {
+  width: 100%;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.autoItem:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.autoCity {
+  font-weight: 800;
+}
+
+.autoMeta {
+  opacity: 0.7;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.pickedHint {
+  margin-top: 10px;
+  opacity: 0.82;
+  font-weight: 700;
+}
+
+.pickedHint.warn {
+  opacity: 0.7;
+}

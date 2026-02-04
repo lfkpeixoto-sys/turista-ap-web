@@ -1,0 +1,95 @@
+.publicProfilePage {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.ppCard {
+  width: min(980px, 100%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.ppLoading { padding: 22px; font-weight: 800; opacity: 0.8; }
+
+.ppTitle { font-size: 20px; font-weight: 900; }
+.ppSub { margin-top: 6px; opacity: 0.8; font-weight: 600; }
+
+.ppActions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+.ppHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.ppLeft { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
+
+.ppAvatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.ppIdentity { min-width: 0; }
+.ppName { font-size: 20px; font-weight: 900; line-height: 1.1; }
+.ppHandle { margin-top: 4px; opacity: 0.75; font-weight: 700; }
+.ppBio { margin-top: 10px; opacity: 0.85; font-weight: 600; max-width: 520px; }
+
+.ppRight { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+.ppStats {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ppStat {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ppStatLabel { font-weight: 800; opacity: 0.75; font-size: 13px; }
+.ppStatValue { margin-top: 8px; font-weight: 900; font-size: 22px; }
+
+.ppSectionTop { margin-top: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.ppSectionTitle { font-size: 16px; font-weight: 900; }
+
+.ppEmpty {
+  margin-top: 12px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ppEmptyTitle { font-weight: 900; font-size: 16px; }
+.ppEmptySub { margin-top: 6px; opacity: 0.8; font-weight: 600; }
+
+.ppGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 740px) { .ppGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 980px) { .ppGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+.ppTile {
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 14px;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.ppTileName { font-weight: 900; font-size: 14px; line-height: 1.1; }
+.ppTileMeta { opacity: 0.75; font-weight: 700; font-size: 12px; }

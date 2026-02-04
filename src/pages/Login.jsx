@@ -8,7 +8,8 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../services/firebase";
+
 
 export default function Login() {
   const nav = useNavigate();
